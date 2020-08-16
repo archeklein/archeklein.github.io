@@ -1,4 +1,4 @@
-import { Version, Category } from './items';
+import { Version, Category } from './items/items';
 
 export interface Recipes {
   sourceSheet: SourceSheet;
