@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { housewares, Items, Variant } from '../data'
+import { forSale as source, Items, Variant } from '../data'
 import { capitalize, Cataloged } from '../utils'
 import { Table, Avatar, Input, Checkbox, InputNumber } from 'antd'
 import axios from 'axios'
@@ -7,7 +7,7 @@ import { VariantCard, VariantListWrapper } from './VariantList'
 
 export const ItemList = () => {
     const [searchKey, setSearchKey] = useState<string>('')
-    const [dataSource, setDataSource] = useState<Items[]>(housewares)
+    const [dataSource, setDataSource] = useState<Items[]>(source)
     const [catalog, setCatalog] = useState<Cataloged[]>([])
     const [expandedRows, setExpandedRows] = useState<string[]>([])
 
@@ -117,7 +117,7 @@ export const ItemList = () => {
         const key = e.target.value
         setSearchKey(key)
         setDataSource(
-            housewares.filter((item: Items) => item.name.includes(key))
+            source.filter((item: Items) => item.name.includes(key))
         )
     }
 
@@ -129,7 +129,7 @@ export const ItemList = () => {
                 onChange={onSearch}
             />
             <Table
-                pagination={{ position: ['topRight'], pageSize: 20 }}
+                pagination={{ position: ['topLeft'], pageSize: 15 }}
                 dataSource={dataSource}
                 columns={itemColumns}
                 rowKey={'name'}
@@ -139,7 +139,7 @@ export const ItemList = () => {
                 }
                 onRow={(record, rowIndex) => {
                     return {
-                        onClick: (event) => {
+                        onDoubleClick: (event) => {
                             const newExpandedRows = expandedRows.includes(
                                 record.name
                             )

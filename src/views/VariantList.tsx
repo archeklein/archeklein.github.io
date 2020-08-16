@@ -32,11 +32,11 @@ export const VariantCard = (props: VariantCardProps) => {
                 <span>Catalog:</span>
                 <Checkbox
                     checked={cataloged}
-                    onChange={(e) =>
+                    onChange={(e) => {
                         e.target.checked
                             ? onCatalogAdd(variant.uniqueEntryId)
                             : onCatalogRemove(variant.uniqueEntryId)
-                    }
+                    }}
                 />
             </Space>
             <Space style={{ width: '100%' }}>

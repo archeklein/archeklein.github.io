@@ -1,6 +1,6 @@
 import React from 'react'
 import { ItemList } from './views/ItemList'
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.dark.css'
 
 function App() {
     return (
